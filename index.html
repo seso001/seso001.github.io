@@ -5,6 +5,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 <title>射手地址发布</title>
+<script type="text/javascript">
+    document.addEventListener('plusready', function () {
+        //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+        var webview = plus.webview.currentWebview();
+        plus.key.addEventListener('backbutton', function () {
+            webview.canBack(function (e) {
+                if (e.canBack) {
+                    webview.back();
+                } else {
+                    webview.close(); //hide,quit
+                    //plus.runtime.quit();
+                }
+            })
+        });
+    });
+</script>
 </head>
 <body>
 <div style="color:#000; text-align:center; font-size:16px; line-height:18px">
